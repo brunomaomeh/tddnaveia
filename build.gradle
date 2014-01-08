@@ -53,3 +53,7 @@ task "create-dirs" << {
 	sourceSets*.java.srcDirs*.each { it.mkdirs() }
 	sourceSets*.resources.srcDirs*.each { it.mkdirs() }
 }
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.10'
+}
