@@ -3,6 +3,8 @@ package tdd.controller;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -12,6 +14,9 @@ import com.google.common.collect.Lists;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
+import br.com.caelum.vraptor.util.test.MockValidator;
+import br.com.caelum.vraptor.validator.Message;
+import br.com.caelum.vraptor.validator.ValidationException;
 import tdd.exception.UsuarioCadastradoException;
 import tdd.model.Usuario;
 import tdd.service.UsuarioService;
@@ -20,14 +25,14 @@ public class UsuarioControllerTest {
 
 	private UsuarioController controller;
 	private Result result = new MockResult();
-	
+	private MockValidator validator = new MockValidator();
 	@Mock
 	private UsuarioService service;
 	
 	@Before
 	public void setUp(){
 		MockitoAnnotations.initMocks(this);
-		controller = new UsuarioController(result, service);
+		controller = new UsuarioController(result, service, validator);
 	}
 	
 	@Test
@@ -54,6 +59,28 @@ public class UsuarioControllerTest {
 		assertEquals("Usuario Cadastrado com Sucesso.", result.included().get("sucesso"));
 	}
 	
+//	@Test
+//	public void quandoNomeNaoInformado_ocorreErroDeValidacao(){
+//		Usuario usuarioSemNome = usuarioJoao();
+//		usuarioSemNome.setNome("");
+//		validaCamposObrigatorios(usuarioSemNome, "Nome não informado");
+//	}
+//	
+//	private void validaCamposObrigatorios(
+//			Usuario usuario, String categoria) {
+//		try {
+//			controller.cadastraUm(usuario);
+//			fail("Deveria ter ocorrido um erro de validacao!");
+//		} catch (ValidationException exception) {
+//			List<Message> errors = exception.getErrors();
+//			assertFalse(errors.isEmpty());
+//			assertEquals(1, errors.size());
+//			Message validationError = errors.get(0);
+//			assertEquals("erro", validationError.getCategory());
+//			assertEquals(categoria, validationError.getMessage());
+//		}
+//	}
+	
 	@Test
 	public void lancaExcecao_QuandoUsuarioJaCadastrado(){
 		doThrow(new UsuarioCadastradoException("Usuario já existe!")).when(service).cadastraUm(any(Usuario.class));
@@ -78,7 +105,7 @@ public class UsuarioControllerTest {
 	@Test
 	public void deveSerPossivelExcluirUmUsuario(){
 		controller.excluiUm(any(Usuario.class));
-		verify(service).excuiUm(any(Usuario.class));
+		verify(service).excluiUm(any(Usuario.class));
 		assertEquals("Usuário excluído com sucesso!", result.included().get("sucesso"));
 	}
 
