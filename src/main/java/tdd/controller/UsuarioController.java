@@ -3,6 +3,8 @@ package tdd.controller;
 import java.util.List;
 
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.Validator;
+import br.com.caelum.vraptor.validator.Validations;
 import tdd.exception.UsuarioCadastradoException;
 import tdd.model.Usuario;
 import tdd.service.UsuarioService;
@@ -11,10 +13,12 @@ public class UsuarioController {
 
 	private Result result;
 	private UsuarioService service;
+	private Validator validator;
 	
-	public UsuarioController(Result result, UsuarioService service) {
+	public UsuarioController(Result result, UsuarioService service, Validator validator) {
 		this.result = result;
 		this.service = service;
+		this.validator = validator;
 	}
 	
 	public void carregaUm(Usuario usuario) {
@@ -22,7 +26,12 @@ public class UsuarioController {
 		result.include("usuario", usuarioRetornado);
 	}
 
-	public void cadastraUm(Usuario usuario) {
+	public void cadastraUm(final Usuario usuario) {
+//	 	validator.checking(new Validations() {{
+//	        that(!usuario.getNome().isEmpty(),  "erro", "Nome nao informado");
+//	      }
+//	    });
+//	    validator.onErrorRedirectTo(this).paginaDeCadastro();
 		try {
 			service.cadastraUm(usuario);
 			result.include("sucesso", "Usuario Cadastrado com Sucesso.");
@@ -41,7 +50,7 @@ public class UsuarioController {
 	}
 
 	public void excluiUm(Usuario usuario) {
-		service.excuiUm(usuario);
+		service.excluiUm(usuario);
 		result.include("sucesso", "Usuário excluído com sucesso!");
 	}
 
@@ -50,4 +59,9 @@ public class UsuarioController {
 		result.include("sucesso", "Usuário editado com sucesso!");
 	}
 
+	
+	public void paginaDeCadastro(){
+		
+	}
+	
 }

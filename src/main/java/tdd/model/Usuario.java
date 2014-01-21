@@ -1,11 +1,25 @@
 package tdd.model;
 
-public class Usuario {
+import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name="usuario")
+public class Usuario implements Serializable {
+
+	@Id
 	private Long id;
+	
 	private String nome;
+	
 	private String login;
+	
 	private String password;
+	
 	private String email;
 
 	public Long getId() {
