@@ -2,6 +2,7 @@ package br.com.tddnaveia.service;
 
 import java.util.List;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -10,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.tddnaveia.exception.UsuarioCadastradoException;
 import br.com.tddnaveia.model.Usuario;
 
 @Service
@@ -24,7 +26,7 @@ public class UsuarioService {
 	}
 
 	public void cadastraUm(Usuario usuario) {
-		entityManager.persist(usuario);
+			entityManager.persist(usuario);
 	}
 
 	@SuppressWarnings("unchecked")

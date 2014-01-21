@@ -5,6 +5,8 @@ import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
+import javax.persistence.EntityExistsException;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,6 +52,12 @@ public class UsuarioServiceTest {
 		assertEquals(usuarioJose(), usuarioService.carregaUm(usuarioJose()));
 	}
 	
+	@Test(expected=EntityExistsException.class)
+	public void lancaExcecao_QuandoUsuarioJaCadastrado(){
+		usuarioService.cadastraUm(usuarioMaria());
+		usuarioService.cadastraUm(usuarioMaria());
+	}
+	
 	private Usuario usuarioJoao(){
 		Usuario usuario = new Usuario();
 		usuario.setId(1L);
@@ -69,6 +77,7 @@ public class UsuarioServiceTest {
 		usuario.setPassword("54321");
 		return usuario;
 	}
+	
 	private Usuario usuarioMaria(){
 		Usuario usuario = new Usuario();
 		usuario.setId(3L);
@@ -78,6 +87,7 @@ public class UsuarioServiceTest {
 		usuario.setPassword("33333");
 		return usuario;
 	}
+	
 	private Usuario usuarioJoaquim(){
 		Usuario usuario = new Usuario();
 		usuario.setId(4L);

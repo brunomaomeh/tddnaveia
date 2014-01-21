@@ -1,6 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <body>
+	<c:if test="${not empty sucesso}">
+			<p>${sucesso}</p>
+	</c:if>
+	<c:if test="${not empty erro}">
+			<p>${erro}</p>
+	</c:if>
 	<form  method="post" action='<c:url value="/usuario/cadastra" />'>
 		Id: <input type="text" name="usuario.id" />
 		Nome: <input type="text" name="usuario.nome" />
