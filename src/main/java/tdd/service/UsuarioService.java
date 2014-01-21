@@ -40,6 +40,7 @@ public class UsuarioService {
 	}
 
 	public void editaUm(Usuario usuario) {
+		entityManager.merge(usuario);
 	}
 
 }
