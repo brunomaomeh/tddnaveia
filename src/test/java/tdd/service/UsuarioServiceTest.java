@@ -98,6 +98,14 @@ public class UsuarioServiceTest {
 		assertEquals(usuarioMaria(), usuarioService.carregaUm(usuarioMaria()));
 		usuarioService.excluiUm(usuarioMaria());
 		assertNull(usuarioService.carregaUm(usuarioMaria()));
-		
+	}
+	
+	@Test
+	public void deveEditarUmUsuario(){
+		assertEquals(usuarioMaria(), usuarioService.carregaUm(usuarioMaria()));
+		Usuario mariaEditada = usuarioMaria();
+		mariaEditada.setEmail("mariazinha@tddnaveia.com");
+		usuarioService.editaUm(mariaEditada);
+		assertEquals(mariaEditada, usuarioService.carregaUm(usuarioMaria()));
 	}
 }
