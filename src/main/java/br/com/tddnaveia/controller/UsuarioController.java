@@ -1,13 +1,12 @@
-package tdd.controller;
+package br.com.tddnaveia.controller;
 
 import java.util.List;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.validator.Validations;
-import tdd.exception.UsuarioCadastradoException;
-import tdd.model.Usuario;
-import tdd.service.UsuarioService;
+import br.com.tddnaveia.exception.UsuarioCadastradoException;
+import br.com.tddnaveia.model.Usuario;
+import br.com.tddnaveia.service.UsuarioService;
 
 public class UsuarioController {
 
