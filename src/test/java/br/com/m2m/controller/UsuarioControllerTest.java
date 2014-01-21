@@ -13,7 +13,6 @@ import org.mockito.MockitoAnnotations;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
-import br.com.caelum.vraptor.util.test.MockValidator;
 import br.com.tddnaveia.controller.UsuarioController;
 import br.com.tddnaveia.exception.UsuarioCadastradoException;
 import br.com.tddnaveia.model.Usuario;
@@ -25,14 +24,16 @@ public class UsuarioControllerTest {
 
 	private UsuarioController controller;
 	private Result result = new MockResult();
-	private MockValidator validator = new MockValidator();
+//	private MockValidator validator = new MockValidator();
 	@Mock
 	private UsuarioService service;
 	
 	@Before
 	public void setUp(){
 		MockitoAnnotations.initMocks(this);
-		controller = new UsuarioController(result, service, validator);
+		controller = new UsuarioController(result, service
+//												 , validator
+												 );
 	}
 	
 	@Test
