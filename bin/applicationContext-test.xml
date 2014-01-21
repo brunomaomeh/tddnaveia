@@ -11,7 +11,7 @@
 						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
 	
 	<context:annotation-config />
-	<context:component-scan base-package="tdd" />
+	<context:component-scan base-package="br.com.tddnaveia" />
 	<context:component-scan base-package="dbunit" />
 
 	<context:property-placeholder location="classpath:jdbc.properties"/>
