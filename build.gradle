@@ -36,7 +36,8 @@ dependencies {
 	}
 	compile group:"br.com.caelum", name: "vraptor", version: "3.5.1"
 	compile group:"commons-lang", name: "commons-lang", version: "2.6"
-	compile group:"postgresql", name: "postgresql", version: "9.1-901.jdbc4"
+//	compile group:"postgresql", name: "postgresql", version: "9.1-901.jdbc4"
+	compile group:"org.hsqldb", name:"hsqldb", version:"2.3.1"
 	compile group:"org.dbunit", name:"dbunit", version:"2.4.8"
 	compile group:"org.slf4j", name:"slf4j-api", version:"1.7.5"
 	compile group:"org.aspectj", name: "aspectjrt", version: "1.7.2"

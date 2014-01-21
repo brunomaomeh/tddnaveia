@@ -1,25 +1,25 @@
-package tdd.controller;
+package br.com.m2m.controller;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
-
-import java.util.List;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Matchers.any;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
-import com.google.common.collect.Lists;
-
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
 import br.com.caelum.vraptor.util.test.MockValidator;
-import br.com.caelum.vraptor.validator.Message;
-import br.com.caelum.vraptor.validator.ValidationException;
-import tdd.exception.UsuarioCadastradoException;
-import tdd.model.Usuario;
-import tdd.service.UsuarioService;
+import br.com.tddnaveia.controller.UsuarioController;
+import br.com.tddnaveia.exception.UsuarioCadastradoException;
+import br.com.tddnaveia.model.Usuario;
+import br.com.tddnaveia.service.UsuarioService;
+
+import com.google.common.collect.Lists;
 
 public class UsuarioControllerTest {
 

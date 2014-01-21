@@ -1,6 +1,7 @@
-package tdd.service;
+package br.com.m2m.service;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.List;
 
@@ -12,9 +13,11 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.tddnaveia.model.Usuario;
+import br.com.tddnaveia.service.UsuarioService;
+
 import com.google.common.collect.Lists;
 
-import tdd.model.Usuario;
 import dbunit.DbUnitManager;
 
 @RunWith(SpringJUnit4ClassRunner.class)

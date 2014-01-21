@@ -1,4 +1,4 @@
-package tdd.model;
+package br.com.tddnaveia.model;
 
 import java.io.Serializable;
 

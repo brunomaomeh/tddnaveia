@@ -1,4 +1,4 @@
-package tdd.exception;
+package br.com.tddnaveia.exception;
 
 @SuppressWarnings("serial")
 public class UsuarioCadastradoException extends RuntimeException {
