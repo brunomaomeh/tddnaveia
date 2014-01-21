@@ -46,25 +46,26 @@ public class UsuarioController {
 		try {
 			service.cadastraUm(usuario);
 			result.include("sucesso", "Usuario Cadastrado com Sucesso.");
-		} catch (UsuarioCadastradoException e) {
+		} catch (Exception e) {
 			result.include("erro", "Usuario já existe!");
 		}
 		result.redirectTo(this).paginaDeCadastro();
 	}
 
-	@Get
+	@Post
 	@Path("/usuario/lista")
 	public void listarPor(Usuario usuario) {
 		List<Usuario> usuarios = service.listarPor(usuario);
-		if(usuarios!=null){
-			result.include("usuarios", usuarios);
-		}else{
+		if(usuarios==null || usuarios.isEmpty()){
 			result.include("erro", "Usuário não encontrado!");
+		}else{
+			result.include("usuarios", usuarios);
 		}
+		result.redirectTo(this).paginaDeListagem();
 	}
 	
 	@Post
-	@Path("/usuario/exclui")
+	@Path("/usuario/exclui/{id}")
 	public void excluiUm(Usuario usuario) {
 		service.excluiUm(usuario);
 		result.include("sucesso", "Usuário excluído com sucesso!");
@@ -80,6 +81,11 @@ public class UsuarioController {
 	@Get
 	@Path("/usuario/")
 	public void paginaDeCadastro(){
+		
+	}
+	@Get
+	@Path("/usuario/paginaDeListagem")
+	public void paginaDeListagem(){
 		
 	}
 	
