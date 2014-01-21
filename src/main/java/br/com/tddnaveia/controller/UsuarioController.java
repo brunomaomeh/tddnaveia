@@ -2,12 +2,18 @@ package br.com.tddnaveia.controller;
 
 import java.util.List;
 
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Path;
+import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.tddnaveia.exception.UsuarioCadastradoException;
 import br.com.tddnaveia.model.Usuario;
 import br.com.tddnaveia.service.UsuarioService;
 
+@Resource
+@Path("/usuario")
 public class UsuarioController {
 
 	private Result result;
@@ -20,11 +26,15 @@ public class UsuarioController {
 		this.validator = validator;
 	}
 	
+	@Get
+	@Path("/carrega")
 	public void carregaUm(Usuario usuario) {
 		Usuario usuarioRetornado = service.carregaUm(usuario);
 		result.include("usuario", usuarioRetornado);
 	}
-
+	
+	@Post
+	@Path("/cadastra")
 	public void cadastraUm(final Usuario usuario) {
 //	 	validator.checking(new Validations() {{
 //	        that(!usuario.getNome().isEmpty(),  "erro", "Nome nao informado");
@@ -39,6 +49,8 @@ public class UsuarioController {
 		}
 	}
 
+	@Get
+	@Path("/lista")
 	public void listarPor(Usuario usuario) {
 		List<Usuario> usuarios = service.listarPor(usuario);
 		if(usuarios!=null){
@@ -47,18 +59,23 @@ public class UsuarioController {
 			result.include("erro", "Usuário não encontrado!");
 		}
 	}
-
+	
+	@Post
+	@Path("/exclui")
 	public void excluiUm(Usuario usuario) {
 		service.excluiUm(usuario);
 		result.include("sucesso", "Usuário excluído com sucesso!");
 	}
 
+	@Post
+	@Path("/edita")
 	public void editaUm(Usuario usuario) {
 		service.editaUm(usuario);
 		result.include("sucesso", "Usuário editado com sucesso!");
 	}
 
-	
+	@Get
+	@Path("/")
 	public void paginaDeCadastro(){
 		
 	}
