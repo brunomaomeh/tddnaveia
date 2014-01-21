@@ -117,4 +117,11 @@ public class UsuarioControllerTest {
 		assertEquals("Usuário editado com sucesso!", result.included().get("sucesso"));
 	}
 	
+	@Test
+	public void deveCarregarPaginaDeEdicao(){
+		when(service.carregaUm(any(Usuario.class))).thenReturn(usuarioJoao());
+		controller.paginaDeEdicao(any(Usuario.class));
+		assertEquals(usuarioJoao(), result.included().get("usuario"));
+	}
+	
 }

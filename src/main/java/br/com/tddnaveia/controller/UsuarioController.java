@@ -64,11 +64,12 @@ public class UsuarioController {
 		result.redirectTo(this).paginaDeListagem();
 	}
 	
-	@Post
-	@Path("/usuario/exclui/{id}")
+	@Get
+	@Path("/usuario/exclui/{usuario.id}")
 	public void excluiUm(Usuario usuario) {
 		service.excluiUm(usuario);
 		result.include("sucesso", "Usuário excluído com sucesso!");
+		result.redirectTo(this).paginaDeListagem();
 	}
 
 	@Post
@@ -76,6 +77,7 @@ public class UsuarioController {
 	public void editaUm(Usuario usuario) {
 		service.editaUm(usuario);
 		result.include("sucesso", "Usuário editado com sucesso!");
+		result.redirectTo(this).paginaDeListagem();
 	}
 
 	@Get
@@ -87,6 +89,13 @@ public class UsuarioController {
 	@Path("/usuario/paginaDeListagem")
 	public void paginaDeListagem(){
 		
+	}
+	
+	@Get
+	@Path("/usuario/paginaDeEdicao/{usuario.id}")
+	public void paginaDeEdicao(Usuario usuario){
+		Usuario usuarioRetornado = service.carregaUm(usuario);
+		result.include("usuario", usuarioRetornado);
 	}
 	
 	@Get

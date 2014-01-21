@@ -91,7 +91,7 @@ public class UsuarioServiceTest {
 	private Usuario usuarioJoaquim(){
 		Usuario usuario = new Usuario();
 		usuario.setId(4L);
-		usuario.setLogin("jose");
+		usuario.setLogin("joaquim");
 		usuario.setNome("Joaquim");
 		usuario.setEmail("joaquim@tddnaveia.com");
 		usuario.setPassword("44444");

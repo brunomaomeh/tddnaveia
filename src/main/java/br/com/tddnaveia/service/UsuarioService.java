@@ -2,16 +2,15 @@ package br.com.tddnaveia.service;
 
 import java.util.List;
 
-import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.tddnaveia.exception.UsuarioCadastradoException;
 import br.com.tddnaveia.model.Usuario;
 
 @Service
@@ -33,7 +32,7 @@ public class UsuarioService {
 	public List<Usuario> listarPor(Usuario usuario) {
 		return ((Session)entityManager.getDelegate())
 				.createCriteria(Usuario.class)
-				.add(Restrictions.ilike("login", usuario.getLogin())).list();
+				.add(Restrictions.ilike("login", usuario.getLogin(), MatchMode.ANYWHERE)).list();
 	}
 
 	public void excluiUm(Usuario usuario) {

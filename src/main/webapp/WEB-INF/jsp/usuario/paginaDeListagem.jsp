@@ -4,6 +4,9 @@
 	<c:if test="${not empty erro}">
 			<p>${erro}</p>
 	</c:if>
+	<c:if test="${not empty sucesso}">
+			<p>${sucesso}</p>
+	</c:if>
 	<form  method="post" action='<c:url value="/usuario/lista" />'>
 		Login: <input type="text" name="usuario.login" />
 		<input type="submit" value="Listar">
@@ -24,7 +27,8 @@
 				<td>${usuario.nome} </td>
 				<td>${usuario.login} </td>
 				<td>${usuario.email} </td>
-				<td><a href='<c:url value="/usuario/exclui/${usuario.id}" />'>Excluir</a></td>
+				<td><a href='<c:url value="/usuario/exclui/${usuario.id}" />'>Excluir</a> 
+				<a href='<c:url value="/usuario/paginaDeEdicao/${usuario.id}" />'>Editar</a></td>
 			</tr>
 		</c:forEach>
 	</table>
