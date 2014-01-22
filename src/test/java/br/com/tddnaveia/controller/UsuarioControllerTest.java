@@ -13,7 +13,6 @@ import org.mockito.MockitoAnnotations;
 
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.util.test.MockResult;
-import br.com.tddnaveia.controller.UsuarioController;
 import br.com.tddnaveia.exception.UsuarioCadastradoException;
 import br.com.tddnaveia.model.Usuario;
 import br.com.tddnaveia.service.UsuarioService;
