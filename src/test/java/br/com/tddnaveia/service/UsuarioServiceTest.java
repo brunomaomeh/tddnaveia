@@ -1,4 +1,4 @@
-package br.com.m2m.service;
+package br.com.tddnaveia.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;

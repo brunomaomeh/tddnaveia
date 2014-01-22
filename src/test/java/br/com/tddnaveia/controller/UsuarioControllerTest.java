@@ -1,4 +1,4 @@
-package br.com.m2m.controller;
+package br.com.tddnaveia.controller;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Matchers.any;
